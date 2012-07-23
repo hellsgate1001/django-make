@@ -1,8 +1,7 @@
-<<<<<<< HEAD
 env
 env/
 *.pyc
-=======
+
 *.py[co]
 
 # Packages
@@ -30,4 +29,4 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
->>>>>>> 8d8d6d93f73a8c5fc251b46fe12185a0b8b378e6
+

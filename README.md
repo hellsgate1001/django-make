@@ -50,4 +50,70 @@ Great for:
 + Creating installation routines for remote deployment
 + Creating installers for third-party deployment
 + All apps are made in the same manor. 
-+ Never miss a step.
++ Never miss a step. 
+
+Toolset:
+    
+    # Pip install
+    >>> from utils import *
+    >>> pip_install('yolk')
+    # installs yolk
+   
+    # Confirm dialog
+    >>> confirm(prompt='Create Directory?', resp=True)
+    Create Directory? [y]|n: 
+    True
+    >>> confirm(prompt='Create Directory?', resp=False)
+    Create Directory? [n]|y: 
+    False
+    >>> confirm(prompt='Create Directory?', resp=False)
+    Create Directory? [n]|y: y
+    True
+    
+    # DictClass for turning objects into class style
+    >>> x = DictClass({'name': 'Fishy', 'word':'w00t!'})
+    >>> x.name
+    'Fishy'
+    
+    # Get Setting functionality. Providing full waterfall fallthough
+    # of values using: Config File JSON, argument settings, user input
+    >>> name = get_setting('site_name', prompt="What's the site name? ")
+    # Fallthrough
+    'project name'
+    
+    
+    
+Config files are JSON mapped variables using variable names
+matching arguments and application settings.
+    
+    # Supply tuple, tuple of configs.
+    >>> configs = (
+               ('default', 'config/default.conf',),
+               ('dev', 'config/development.conf',),
+               ('production', 'config/production.conf',),
+            )
+    >>> parse_config()
+    {} # config object of all settings
+    
+
+Library handling - for matching and collecting using PIP missing 
+packages.
+Map packages is a working progress paradim; supply the PIP 
+package and the import string required for required functionality
+off the application.
+On initial script load and install 
+
+    # A list of real imports for use with aut importing of required
+    # scripts
+    >>> map_package = (
+            ('termcolor', 'from termcolor import colored', ),
+            ('docopt', 'from docopt import docopt', ),
+            ('fabric', 'from fabric.api import settings, run', ),
+            ('clint', 'from clint import resources', ),
+            ('yolk', 'import yolk', ),
+    )
+
+    # If package is installed
+    >>> have('yolk')
+    True # False
+    
