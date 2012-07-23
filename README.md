@@ -52,12 +52,18 @@ Great for:
 + All apps are made in the same manor. 
 + Never miss a step. 
 
-Toolset:
-    
+## Toolset:
+
+The pip installer is a wrapper to pip of which can be managed via
+the code. Currently it simply installs.
+
     # Pip install
     >>> from utils import *
     >>> pip_install('yolk')
     # installs yolk
+
+Yes another confimation dialog. This allows force answering, default
+and obviously question.
    
     # Confirm dialog
     >>> confirm(prompt='Create Directory?', resp=True)
@@ -66,35 +72,51 @@ Toolset:
     >>> confirm(prompt='Create Directory?', resp=False)
     Create Directory? [n]|y: 
     False
-    >>> confirm(prompt='Create Directory?', resp=False)
-    Create Directory? [n]|y: y
+    >>> confirm()
+    Confirm? [n]|y: y
     True
-    
+
+DictClass is a tiny utility to convert flat objects to class
+callables.
+
     # DictClass for turning objects into class style
     >>> x = DictClass({'name': 'Fishy', 'word':'w00t!'})
     >>> x.name
     'Fishy'
-    
+
+get_setting is (mostly) framework dependant. It returns a value
+by attempting a chain of inputs:
+1. passed config files
+2. command line argument
+3. pipe # NOT IMPLEMENTED
+4. terminal prompt
+in that order.
+
     # Get Setting functionality. Providing full waterfall fallthough
     # of values using: Config File JSON, argument settings, user input
     >>> name = get_setting('site_name', prompt="What's the site name? ")
     # Fallthrough
-    'project name'
-    
-    
+    'project name'    
     
 Config files are JSON mapped variables using variable names
 matching arguments and application settings.
     
+    
+    # Tiny default.conf example
+    {
+        "name": "Jimmy",
+        "verbose": true
+    } 
+    
     # Supply tuple, tuple of configs.
+    
     >>> configs = (
                ('default', 'config/default.conf',),
-               ('dev', 'config/development.conf',),
-               ('production', 'config/production.conf',),
+               # ('dev', 'config/development.conf',),
+               # ('production', 'config/production.conf',),
             )
     >>> parse_config()
-    {} # config object of all settings
-    
+
 
 Library handling - for matching and collecting using PIP missing 
 packages.
@@ -115,5 +137,9 @@ On initial script load and install
 
     # If package is installed
     >>> have('yolk')
-    True # False
+    True
+    
+    # Run install if required before continuing
+    >> def run(): pass # Fancy function
+    >>> depend_on('yolk', ru)
     
