@@ -35,7 +35,7 @@ I'm a python developer - go figure. I love Django but I don't love
 deployments. I must deploy offsite, of which is handled by an engineer; of which in turn
 is handled by myself over a remote desktop or a camera pointing 
 at a CRT with me trying to yelp over the sound of background servers
-220 miles away. A this point they don't know what a python is or what the 
+220 miles away. At this point they don't know what a python is or what the 
 where f*ck django has his guitar. Couple that with my eggs, a pip bundle, 
 some south migrations and a git in the middle, it's no wonder why 
 my collegues think I'm a foreign language. 
@@ -86,10 +86,12 @@ callables.
 
 get_setting is (mostly) framework dependant. It returns a value
 by attempting a chain of inputs:
-1. passed config files
-2. command line argument
-3. pipe # NOT IMPLEMENTED
-4. terminal prompt
+
+    1. passed config files
+    2. command line argument
+    3. pipe # NOT IMPLEMENTED
+    4. terminal prompt
+
 in that order.
 
     # Get Setting functionality. Providing full waterfall fallthough
@@ -141,5 +143,5 @@ On initial script load and install
     
     # Run install if required before continuing
     >> def run(): pass # Fancy function
-    >>> depend_on('yolk', ru)
+    >>> depend_on('yolk', run)
     
