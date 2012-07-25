@@ -1,4 +1,4 @@
-django-make
+django-make *ALPHA... Really don't think it'll work yet dude!
 ===========
 
 Django make will apply a set of build scripts for getting a django
